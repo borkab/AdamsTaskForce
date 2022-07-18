@@ -15,6 +15,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 /*
+curl localhost:8080
+OR
 curl -X GET http://localhost:8080/
 curl: (7) Failed to connect to localhost port 8080 after 0 ms: Connection refused
 */
