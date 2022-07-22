@@ -56,3 +56,8 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 	p, _ := loadPage(title)
 	fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", p.Title, p.Body)
 }
+
+/*
+http: panic serving [::1]:38452: runtime error:
+invalid memory address or nil pointer dereference
+*/
