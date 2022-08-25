@@ -1,17 +1,19 @@
-package main
+package wapp
 
 import (
 	"fmt"
-	"log"
+	"io"
 	"net/http"
 )
 
-func main() {
-	http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
-
+type Wapp struct {
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println(w.Write([]byte("Hello, world!")))
+func (wa *Wapp) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+
+	bs, err := io.ReadAll(r.Body)
+	if err != nil {
+		return
+	}
+	fmt.Println(string(bs))
 }
