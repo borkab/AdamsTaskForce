@@ -6,3 +6,7 @@ func Forge(a []string, b []string) []string {
 	c = append(c, b...)
 	return c
 }
+
+func Coppy(a []string) *[]string {
+	return &a
+}

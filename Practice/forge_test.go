@@ -16,3 +16,14 @@ func TestForge(t *testing.T) {
 		t.Fatal("the forge can't be with you")
 	}
 }
+
+func TestCoppy(t *testing.T) {
+	knifes := []string{"canister", "sanmai", "wave", "dagger", "bowie", "recurve"}
+	got := Coppy(knifes)
+	want := &knifes
+
+	if !reflect.DeepEqual(got, want) {
+		t.Fatal("no coppy")
+	}
+
+}
