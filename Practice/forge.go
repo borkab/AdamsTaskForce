@@ -10,3 +10,15 @@ func Forge(a []string, b []string) []string {
 func Coppy(a []string) *[]string {
 	return &a
 }
+
+func IfHasFire(a []string, b string) bool {
+	var hasFire bool
+	hasFire = false
+	for _, v := range a {
+		if v == b {
+			hasFire = true
+			break
+		}
+	}
+	return hasFire
+}

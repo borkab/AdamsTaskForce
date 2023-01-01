@@ -27,3 +27,14 @@ func TestCoppy(t *testing.T) {
 	}
 
 }
+
+func TestIfHasFire(t *testing.T) {
+	knifes := []string{"canister", "sanmai", "wave", "dagger", "bowie", "recurve"}
+	fire := "wave"
+	got := IfHasFire(knifes, fire)
+	want := true
+
+	if got != want {
+		t.Fatal("it has no fire")
+	}
+}
