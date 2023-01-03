@@ -22,7 +22,8 @@ func TestCopy(t *testing.T) {
 	src := []string{"canister", "sanmai", "wave", "dagger", "sanmai", "bowie", "recurve", "wave"}
 	var dst []string
 
-	got := Copy(src, dst)
+	got := Copy(dst, src)
+
 	want := []string{"canister", "sanmai", "wave", "dagger", "bowie", "recurve"}
 
 	if !reflect.DeepEqual(got, want) {

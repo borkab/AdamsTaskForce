@@ -18,13 +18,13 @@ func Forge(a []string, b []string) []string {
 	return c
 }
 
-func Copy(src, dst []string) (copper []string) {
+func Copy(dst, src []string) (copper []string) {
 
-	copy(src, dst)
+	copy(dst, src) //masold src tartalmat dst-be
 
-	for _, v := range dst {
-		if !Contains(copper, v) {
-			copper = append(copper, v)
+	for _, v := range dst { //menj vegig dst osszes elemen. amikor dst elso elemehez ertel,
+		if !Contains(copper, v) { //nezd meg, h copper tartalmazza e mar dst elso elemet.
+			copper = append(copper, v) //ha nem, akkor add hozza copperhez dst elso elemet
 		}
 	}
 	return copper
