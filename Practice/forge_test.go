@@ -6,6 +6,7 @@ import (
 )
 
 func TestForge(t *testing.T) {
+
 	damast := []string{"canister", "sanmai", "wave"}
 	knife := []string{"dagger", "bowie", "recurve"}
 
@@ -17,39 +18,26 @@ func TestForge(t *testing.T) {
 	}
 }
 
-func TestCoppy(t *testing.T) {
-	knifes := []string{"canister", "sanmai", "wave", "dagger", "bowie", "recurve"}
-	got := Coppy(knifes)
-	want := &knifes
+func TestCopy(t *testing.T) {
+	src := []string{"canister", "sanmai", "wave", "dagger", "sanmai", "bowie", "recurve", "wave"}
+	var dst []string
+
+	got := Copy(src, dst)
+	want := []string{"canister", "sanmai", "wave", "dagger", "bowie", "recurve"}
 
 	if !reflect.DeepEqual(got, want) {
-		t.Fatal("no coppy")
+		t.Fatal("I couldn't forge as you wish")
 	}
-
 }
 
-func TestIfHasFire(t *testing.T) {
+func TestContains(t *testing.T) {
+	slice := []string{"canister", "sanmai", "wave", "dagger", "bowie", "recurve"}
+	str := "dagger"
 
-	t.Run("if it has FIRE", func(t *testing.T) {
-		knifes := []string{"canister", "sanmai", "wave", "dagger", "bowie", "recurve"}
-		fire := "wave"
-		got := IfHasFire(knifes, fire)
-		want := true
+	got := Contains(slice, str)
+	want := true
 
-		if got != want {
-			t.Fatal("it has no fire")
-		}
-	})
-
-	t.Run("if it has NO fire", func(t *testing.T) {
-		knifes := []string{"canister", "sanmai", "wave", "dagger", "bowie", "recurve"}
-		nofire := "sword"
-		got := IfHasFire(knifes, nofire)
-		want := false
-
-		if got != want {
-			t.Fatal("it is too hot, you'll burn")
-		}
-
-	})
+	if got != want {
+		t.Fatalf("got %#v want %#v", got, want)
+	}
 }
