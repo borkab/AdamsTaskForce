@@ -18,7 +18,8 @@ func Forge(a []string, b []string) []string {
 	return c
 }
 
-func Copy(dst, src []string) (copper []string) {
+/*
+func Merge(dst, src []string) (copper []string) {
 
 	copy(dst, src) //masold src tartalmat dst-be
 
@@ -28,6 +29,20 @@ func Copy(dst, src []string) (copper []string) {
 		}
 	}
 	return copper
+}
+
+*/
+
+func Deduplicate(s []string) []string {
+	m := make(map[string]bool)  //csinalj egy map-et string key es boolean ertek parokkal
+	dedupSlice := []string{}    //a leendo listank duplikalt elemek nelkul
+	for _, element := range s { //menj vegig az eredeti lista osszes elemen. amikor az elso elemhez ertel, nezd meg, h
+		if _, v := m[element]; !v { //ha m
+			m[element] = true                        //
+			dedupSlice = append(dedupSlice, element) //akkor add hozze a leendo listadhoz ezt az elemet
+		}
+	}
+	return dedupSlice
 }
 
 func Contains(slice []string, value string) bool {

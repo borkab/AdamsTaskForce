@@ -3,6 +3,8 @@ package ForgedInFire
 import (
 	"reflect"
 	"testing"
+
+	"github.com/adamluzsi/testcase/assert"
 )
 
 func TestForge(t *testing.T) {
@@ -18,17 +20,29 @@ func TestForge(t *testing.T) {
 	}
 }
 
-func TestCopy(t *testing.T) {
+/*
+func TestMerge(t *testing.T) {
 	src := []string{"canister", "sanmai", "wave", "dagger", "sanmai", "bowie", "recurve", "wave"}
 	var dst []string
 
-	got := Copy(dst, src)
+	got := Merge(dst, src)
 
 	want := []string{"canister", "sanmai", "wave", "dagger", "bowie", "recurve"}
 
-	if !reflect.DeepEqual(got, want) {
-		t.Fatal("I couldn't forge as you wish")
-	}
+	assert.Equal(t, got, want)
+
+	//	if !reflect.DeepEqual(got, want) {
+	//		t.Fatal("I couldn't forge as you wish")
+	//	}
+
+}
+*/
+
+func TestDeduplicate(t *testing.T) {
+	input := []string{"1", "3", "2", "4", "2", "3", "1", "5"}
+	got := Deduplicate(input)
+
+	assert.Equal(t, []string{"1", "3", "2", "4", "5"}, got)
 }
 
 func TestContains(t *testing.T) {
