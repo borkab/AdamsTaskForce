@@ -18,28 +18,26 @@ func Forge(a []string, b []string) []string {
 	return c
 }
 
-/*
-func Merge(dst, src []string) (copper []string) {
+func Merge(sliceIN1, sliceIN2 []string) (sliceOUT []string) {
+	m := make(map[string]bool)
+	sliceIN1 = append(sliceIN1, sliceIN2...)
 
-	copy(dst, src) //masold src tartalmat dst-be
-
-	for _, v := range dst { //menj vegig dst osszes elemen. amikor dst elso elemehez ertel,
-		if !Contains(copper, v) { //nezd meg, h copper tartalmazza e mar dst elso elemet.
-			copper = append(copper, v) //ha nem, akkor add hozza copperhez dst elso elemet
+	for _, this := range sliceIN1 {
+		if _, that := m[this]; !that {
+			m[this] = true
+			sliceOUT = append(sliceOUT, this)
 		}
 	}
-	return copper
+	return sliceOUT
 }
-
-*/
 
 func Deduplicate(s []string) []string {
 	m := make(map[string]bool)  //csinalj egy map-et string key es boolean ertek parokkal
 	dedupSlice := []string{}    //a leendo listank duplikalt elemek nelkul
 	for _, element := range s { //menj vegig az eredeti lista osszes elemen. amikor az elso elemhez ertel, nezd meg, h
-		if _, v := m[element]; !v { //ha m
-			m[element] = true                        //
-			dedupSlice = append(dedupSlice, element) //akkor add hozze a leendo listadhoz ezt az elemet
+		if _, v := m[element]; !v { //ez az elem szerepel-e mar a map kulcsai kozott
+			m[element] = true                        //akkor tedd bele a mapba ezt az elemet, es
+			dedupSlice = append(dedupSlice, element) //akkor add hozza a leendo listadhoz is ezt az elemet
 		}
 	}
 	return dedupSlice

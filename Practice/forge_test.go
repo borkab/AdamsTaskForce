@@ -20,14 +20,13 @@ func TestForge(t *testing.T) {
 	}
 }
 
-/*
 func TestMerge(t *testing.T) {
-	src := []string{"canister", "sanmai", "wave", "dagger", "sanmai", "bowie", "recurve", "wave"}
-	var dst []string
+	sliceIN := []string{"canister", "sanmai", "wave", "dagger", "sanmai", "bowie", "recurve", "wave"}
+	var sliceOUT []string
 
-	got := Merge(dst, src)
+	got := Merge(sliceIN, sliceOUT)
 
-	want := []string{"canister", "sanmai", "wave", "dagger", "bowie", "recurve"}
+	want := Deduplicate(Forge(sliceIN, sliceOUT))
 
 	assert.Equal(t, got, want)
 
@@ -36,7 +35,6 @@ func TestMerge(t *testing.T) {
 	//	}
 
 }
-*/
 
 func TestDeduplicate(t *testing.T) {
 	input := []string{"1", "3", "2", "4", "2", "3", "1", "5"}
